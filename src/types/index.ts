@@ -10,6 +10,7 @@ export type ArtistType = {
   lastName: string,
   photo: string,
   genre?: string,
+  nameToDisplay: string,
   submissions: string[],
   socialLinks: Map<Links, string>
 }
