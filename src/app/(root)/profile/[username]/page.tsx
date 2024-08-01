@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   getAllUsers,
-  getArtist,
+  getArtistByUsername,
   getCurrentUser,
 } from '@/lib/actions/user.action'
 import Bio from '@/app/components/shared/Bio'
@@ -28,14 +28,14 @@ export default async function Profile({
   } catch(err) {
     user = null
   }
-  const artist = await getArtist(params.username)
+
+  const artist = await getArtistByUsername(params.username)
   const isOwnPage = user?.username === artist?.username
   // user doesn't exist or user.username is not the params.username, don't show edit button
   // user.username is not the params.username, show add comment
   if (artist) {
+    console.log(artist.nameToDisplay, 'nametodisplay')
     // const spotifyId = artist?.socialLinks.get('spotify')!
-
-    console.log(artist.socialLinks)
     return (
       artist && (
         <>
@@ -47,7 +47,7 @@ export default async function Profile({
               height={100}
               className="rounded-md"
             />
-            <h1 className="text-4xl self-center">{artist.nameToDisplay}</h1>
+            <h1 className="text-4xl self-center">{artist.nameToDisplay || artist.username}</h1>
             {isOwnPage && <Link href="/profile/edit">edit</Link>}
           </div>
           <SocialLinks />
@@ -65,13 +65,3 @@ export default async function Profile({
 
   return <>This artist does not exist!</>
 }
-
-// export default async function Profile() {
-//   // const users = await fetch(`http://localhost:3000/api/users`);
-//   // console.log(await users.json())
-
-//   return (
-//     <div>profile</div>
-
-//   )
-// }

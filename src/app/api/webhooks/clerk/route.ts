@@ -3,7 +3,7 @@ import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
 import { clerkClient } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
-import { createUser, deleteUser } from '@/lib/actions/user.action'
+import { createUser, deleteUser, updateUser } from '@/lib/actions/user.action'
 
 export async function POST(req: Request) {
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET
@@ -67,13 +67,14 @@ export async function POST(req: Request) {
       nameToDisplay: username!,
       submissions: [],
       reviews: [],
-      genre: '',
+      genre: [],
       socialLinks: {
         website: '',
         spotify: '',
         'twitter-x': '',
         facebook: '',
         youtube: '',
+        instagram: '',
         bandcamp: '',
         soundcloud: '',
       },
@@ -95,20 +96,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: 'New user created', user: newUser })
   }
 
-  // if (eventType === 'user.updated') {
-  //   const {id, image_url, first_name, last_name, username } = evt.data
+  if (eventType === 'user.updated') {
+    const {id, image_url, first_name, last_name, username } = evt.data
 
-  //   const user = {
-  //     firstName: first_name,
-  //     lastName: last_name,
-  //     username: username!,
-  //     photo: image_url,
-  //   }
+    const user = {
+      firstName: first_name,
+      lastName: last_name,
+      username: username!,
+      photo: image_url,
+    }
 
-  //   const updatedUser = await updateUser(id, user)
+    const updatedUser = await updateUser(id, user)
 
-  //   return NextResponse.json({ message: 'OK', user: updatedUser })
-  // }
+    return NextResponse.json({ message: 'OK', user: updatedUser })
+  }
 
   if (eventType === 'user.deleted') {
     const { id } = evt.data
