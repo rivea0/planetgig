@@ -37,14 +37,16 @@ export async function getArtist(username: string): Promise<ArtistType | undefine
   }
 }
 
-export async function getAllUsers() {
+export async function getAllUsers(): Promise<ArtistType[] | []> {
+  let users = []
   try {
     await connectToDatabase()
-    const users = await Artist.find({})
-    return users
+    users = await Artist.find({})
   } catch (err) {
     console.error(err)
   }
+
+  return users
 }
 
 // export async function updateUser(clerkId: string, user) {

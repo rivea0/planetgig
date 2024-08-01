@@ -11,7 +11,7 @@ import SocialLinks from '@/app/components/shared/SocialLinks'
 export async function generateStaticParams() {
   const users = await getAllUsers()
 
-  return users?.map((user) => ({
+  return users.map((user) => ({
     username: user.username,
   }))
 }
