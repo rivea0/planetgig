@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { UserButton } from '@clerk/nextjs'
-import { currentUser } from '@clerk/nextjs/server'
+// import { currentUser } from '@clerk/nextjs/server'
 import { Button } from '../ui/button'
 import MobileNav from './MobileNav'
 import NavItems from './NavItems'
+import { getCurrentUser } from '@/lib/actions/user.action'
 
-
-export default async function Header() {
-  const user = await currentUser();
+export default async function Header({ isAuth, username }: { isAuth: boolean, username?: string | null }) {
+  // const user = await currentUser();
 
   return (
     <header className="w-full">
@@ -18,18 +18,18 @@ export default async function Header() {
         </Link>
 
         <nav className="md:flex md:justify-center md:items-center hidden w-full">
-          <NavItems isAuth={!!user} />
+          <NavItems isAuth={isAuth} username={username} />
         </nav>
 
         <div className="flex w-32 justify-end items-center gap-4">
-          {!user ? (
+          {!isAuth ? (
             <Button className="rounded-full" size="lg">
               <Link href="/sign-in">Login</Link>
             </Button>
           ) : (
             <UserButton />
           )}
-          <MobileNav isAuth={!!user} />
+          <MobileNav isAuth={isAuth} />
         </div>
       </div>
     </header>

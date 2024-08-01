@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-export default function NavItems({ isAuth }: { isAuth: boolean }) {
+export default function NavItems({ isAuth, username }: { isAuth: boolean, username?: string | null }) {
   const pathname = usePathname()
 
   return (
@@ -13,7 +13,7 @@ export default function NavItems({ isAuth }: { isAuth: boolean }) {
           <>
             <li className={pathname === 'gigs' ? 'text-blue-300' : ''}><Link href="/gigs">Search for gigs</Link></li>
             <li className={pathname === 'submissions' ? 'text-blue-300' : ''}><Link href="/submissions">My submissions</Link></li>
-            <li className={pathname === 'profile' ? 'text-blue-300' : ''}><Link href="/profile">Profile</Link></li>
+            <li className={pathname === 'profile' ? 'text-blue-300' : ''}><Link href={`/profile/${username}`}>Profile</Link></li>
           </>
         )}
       </ul>
