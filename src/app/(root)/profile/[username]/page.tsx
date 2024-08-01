@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import {
   getAllUsers,
   getArtist,
@@ -21,7 +22,12 @@ export default async function Profile({
 }: {
   params: { username: string }
 }) {
-  const user = await getCurrentUser()
+  let user
+  try {
+    user = await getCurrentUser()
+  } catch(err) {
+    user = null
+  }
   const artist = await getArtist(params.username)
   const isOwnPage = user?.username === artist?.username
   // user doesn't exist or user.username is not the params.username, don't show edit button
@@ -41,7 +47,8 @@ export default async function Profile({
               height={100}
               className="rounded-md"
             />
-            <h1 className="text-4xl self-center">{artist.username}</h1>
+            <h1 className="text-4xl self-center">{artist.nameToDisplay}</h1>
+            {isOwnPage && <Link href="/profile/edit">edit</Link>}
           </div>
           <SocialLinks />
           <div className="flex px-8 mt-12 justify-center">

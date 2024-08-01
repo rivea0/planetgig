@@ -8,9 +8,11 @@ const ArtistSchema = new Schema({
   lastName: { type: String },
   photo: { type: String, required: true },
   genre: { type: String },
+  nameToDisplay: { type: String, required: true },
   submissions: { type: [Schema.Types.ObjectId], ref: 'Submission' },
   // @ts-ignore
   socialLinks: { type: Map, of: String },
+  reviews: { type: [Schema.Types.ObjectId], ref: 'Review' }
 })
 
 const Artist = models.Artist || model('Artist', ArtistSchema)

@@ -1,4 +1,3 @@
-
 type Links = 'website' | 'spotify' | 'twitter' | 'facebook' | 'youtube' | 'bandcamp' | 'soundcloud'
 
 export type ArtistType = {
@@ -12,5 +11,6 @@ export type ArtistType = {
   genre?: string,
   nameToDisplay: string,
   submissions: string[],
-  socialLinks: Map<Links, string>
+  socialLinks: Map<Links, string>,
+  reviews: string[]
 }

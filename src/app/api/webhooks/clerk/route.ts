@@ -66,6 +66,7 @@ export async function POST(req: Request) {
       photo: image_url,
       nameToDisplay: username!,
       submissions: [],
+      reviews: [],
       genre: '',
       socialLinks: {
         website: '',

@@ -29,7 +29,7 @@ export default async function Header({ isAuth, username }: { isAuth: boolean, us
           ) : (
             <UserButton />
           )}
-          <MobileNav isAuth={isAuth} />
+          <MobileNav isAuth={isAuth} username={username} />
         </div>
       </div>
     </header>
