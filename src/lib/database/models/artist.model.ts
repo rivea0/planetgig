@@ -9,6 +9,8 @@ const ArtistSchema = new Schema({
   photo: { type: String, required: true },
   genre: { type: String },
   submissions: { type: [Schema.Types.ObjectId], ref: 'Submission' },
+  // @ts-ignore
+  socialLinks: { type: Map, of: String },
 })
 
 const Artist = models.Artist || model('Artist', ArtistSchema)
