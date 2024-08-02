@@ -8,12 +8,12 @@ export default function NavItems({ isAuth, username }: { isAuth: boolean, userna
 
   return (
     <div>
-      <ul className="flex flex-col items-start md:items-center md:justify-center w-full gap-8 md:flex-row">
+      <ul className="flex flex-col items-start text-lg md:items-center md:justify-center w-full gap-16 md:flex-row">
         {isAuth && (
           <>
-            <li className={pathname === 'gigs' ? 'text-blue-300' : ''}><Link href="/gigs">Search for gigs</Link></li>
-            <li className={pathname === 'submissions' ? 'text-blue-300' : ''}><Link href="/submissions">My submissions</Link></li>
-            <li className={pathname === 'profile' ? 'text-blue-300' : ''}><Link href={`/profile/${username}`}>Profile</Link></li>
+            <li className={pathname === '/#gigs' ? 'text-blue-300 bg-blue-500' : ''}><Link href="/#gigs">Search for gigs</Link></li>
+            <li className={pathname === 'submissions' ? 'text-blue-300 bg-blue-500' : ''}><Link href="/submissions">My submissions</Link></li>
+            <li className={pathname === `/profile/${username}` ? 'underline' : ''}><Link href={`/profile/${username}`}>Profile</Link></li>
           </>
         )}
       </ul>

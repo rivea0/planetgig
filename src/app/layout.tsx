@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Urbanist } from 'next/font/google'
+import { Inter, Urbanist } from 'next/font/google'
 import {
   ClerkProvider,
 } from '@clerk/nextjs'
 import './globals.css'
 
-const urbanist = Urbanist({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'PlanetGig',
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ClerkProvider afterSignOutUrl="/">
-        <body className={urbanist.className}>
+        <body className={inter.className}>
           {/* <SignedOut>
         <SignInButton />
       </SignedOut>

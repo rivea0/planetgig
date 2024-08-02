@@ -1,28 +1,27 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "../components/ui/button";
+import Gig from '@/app/components/shared/Gig'
+import Hero from '../components/shared/Hero'
+import { getAllGigs, getCurrentUser } from '@/lib/actions/user.action'
 
-export default function Home() {
+export default async function Home() {
+  const gigs = await getAllGigs()
+  let user = null
+  try {
+    user = await getCurrentUser()
+  } catch (err) {
+    console.error(err)
+  }
+
   return (
-    <main className="flex flex-col w-full">
-      <section className="flex flex-col justify-center items-center gap-8">
-      <h1 className="text-gray-800 text-5xl text-center font-semibold mt-24">Find your next opportunity</h1>
-      <Button className="button w-min text-lg" asChild size="lg">
-        <Link href="#gigs">Explore gigs</Link>
-      </Button>
+    <div className="flex flex-col w-full">
+      <Hero />
+      <section
+        id="gigs"
+        className="grid py-1 px-12 md:grid-cols-3 gap-8 md:gap-12 mt-4 bg-coffee-50"
+      >
+        {gigs.map((gig) => {
+          return <Gig key={gig._id} gig={gig} user={user} />
+        })}
       </section>
-      <section id="gigs" className="w-full flex flex-col gap-8 md:gap-12">
-        <h2>Gig opportunities</h2>
-        {/* <div className="flex w-full flex-col gap-5 md:flex-row"></div> */}
-        {/* <Gigs /> */}
-      </section>
-    </main>
-
-    // <div className={`${urbanist.className} flex flex-col justify-center items-center gap-8`} >
-    //   <h1 className="text-gray-800 text-5xl text-center font-semibold mt-24">Find your next opportunity</h1>
-    //   <Button className="button w-min text-lg" asChild size="lg">
-    //     <Link href="#gigs">Explore gigs</Link>
-    //   </Button>
-    // </div>
-  );
+    </div>
+  )
 }
