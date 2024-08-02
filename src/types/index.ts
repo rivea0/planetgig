@@ -15,16 +15,17 @@ export type ArtistType = {
   firstName: string | null
   lastName: string | null
   photo: string
+  bio: string
   genres?: string[]
   nameToDisplay: string
   submissions: string[]
-  socialLinks: SocialLinks
-  reviews: string[],
-  images?: string[],
+  socialLinks: SocialLinksType
+  reviews: string[]
+  images?: string[]
   videos?: string[]
 }
 
-export type SocialLinks = {
+export type SocialLinksType = {
   website: string
   spotify: string
   'twitter-x': string
@@ -36,48 +37,54 @@ export type SocialLinks = {
 }
 
 export type ArtistUpdateValues = {
-  nameToDisplay?: string,
-  bio?: string,
-  website?: string,
-  spotify?: string,
-  'twitter-x'?: string,
-  facebook?: string,
-  instagram?: string,
-  youtube?: string,
-  bandcamp?: string,
-  soundcloud?: string,
-  genre1?: string,
-  genre2?: string,
-  genre3?: string,
-  genre4?: string,
-  image1?: string,
-  image2?: string,
-  image3?: string,
-  image4?: string,
-  image5?: string,
-  image6?: string,
-  video1?: string,
-  video2?: string,
-  video3?: string,
-  video4?: string,
-  video5?: string,
-  video6?: string,
- 
+  nameToDisplay?: string
+  bio?: string
+  website?: string
+  spotify?: string
+  'twitter-x'?: string
+  facebook?: string
+  instagram?: string
+  youtube?: string
+  bandcamp?: string
+  soundcloud?: string
+  genre1?: string
+  genre2?: string
+  genre3?: string
+  genre4?: string
+  image1?: string
+  image2?: string
+  image3?: string
+  image4?: string
+  image5?: string
+  image6?: string
+  video1?: string
+  video2?: string
+  video3?: string
+  video4?: string
+  video5?: string
+  video6?: string
 }
 
 export type GigType = {
-  _id: string,
-  venue: string,
-  location: string,
-  pay?: string,
-  gigType: string,
-  genre?: string,
-  date: Date,
-  imageUrl?: string,
+  _id: string
+  venue: string
+  location: string
+  pay?: string
+  gigType: string
+  genre?: string
+  date: Date
+  imageUrl?: string
 }
 
 export type SubmissionType = {
-  fromId: string,
-  toId: string,
+  gigId: string
+  artistId: string
   status: 'pending' | 'accepted' | 'declined'
+}
+
+
+export type ReviewType = {
+  fromId: string
+  toId: string
+  content: string
 }
