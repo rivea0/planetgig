@@ -6,12 +6,15 @@ const ArtistSchema = new Schema({
   username: { type: String, required: true, unique: true },
   firstName: { type: String },
   lastName: { type: String },
+  bio: { type: String },
   photo: { type: String, required: true },
-  genre: { type: [String] },
+  genres: { type: [String] },
   nameToDisplay: { type: String, required: true },
   submissions: { type: [Schema.Types.ObjectId], ref: 'Submission' },
   socialLinks: { type: Map, of: String },
-  reviews: { type: [Schema.Types.ObjectId], ref: 'Review' }
+  reviews: { type: [Schema.Types.ObjectId], ref: 'Review' },
+  images: { type: [String] },
+  videos: { type: [String] },
 })
 
 const Artist = models.Artist || model('Artist', ArtistSchema)

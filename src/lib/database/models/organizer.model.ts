@@ -4,7 +4,6 @@ const OrganizerSchema = new Schema({
   email: { type: String, required: true, unique: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  phoneNumber: { type: String, required: true, unique: true },
 })
 
 const Organizer = models.Organizer || model('Organizer', OrganizerSchema)

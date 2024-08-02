@@ -64,10 +64,11 @@ export async function POST(req: Request) {
       firstName: first_name,
       lastName: last_name,
       photo: image_url,
+      bio: '',
       nameToDisplay: username!,
       submissions: [],
       reviews: [],
-      genre: [],
+      genres: [],
       socialLinks: {
         website: '',
         spotify: '',
@@ -78,6 +79,8 @@ export async function POST(req: Request) {
         bandcamp: '',
         soundcloud: '',
       },
+      images: [],
+      videos: [],
     }
 
     console.log(user)

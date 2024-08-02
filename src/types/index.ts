@@ -15,11 +15,13 @@ export type ArtistType = {
   firstName: string | null
   lastName: string | null
   photo: string
-  genre?: string[]
+  genres?: string[]
   nameToDisplay: string
   submissions: string[]
   socialLinks: SocialLinks
-  reviews: string[]
+  reviews: string[],
+  images?: string[],
+  videos?: string[]
 }
 
 export type SocialLinks = {
@@ -48,5 +50,34 @@ export type ArtistUpdateValues = {
   genre2?: string,
   genre3?: string,
   genre4?: string,
+  image1?: string,
+  image2?: string,
+  image3?: string,
+  image4?: string,
+  image5?: string,
+  image6?: string,
+  video1?: string,
+  video2?: string,
+  video3?: string,
+  video4?: string,
+  video5?: string,
+  video6?: string,
+ 
+}
 
+export type GigType = {
+  _id: string,
+  venue: string,
+  location: string,
+  pay?: string,
+  gigType: string,
+  genre?: string,
+  date: Date,
+  imageUrl?: string,
+}
+
+export type SubmissionType = {
+  fromId: string,
+  toId: string,
+  status: 'pending' | 'accepted' | 'declined'
 }
