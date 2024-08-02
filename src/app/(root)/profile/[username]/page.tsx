@@ -8,6 +8,7 @@ import {
 import Bio from '@/app/components/shared/Bio'
 import SpotifyWidget from '@/app/components/shared/SpotifyWidget'
 import SocialLinks from '@/app/components/shared/SocialLinks'
+import { Button } from '@/app/components/ui/button'
 
 export async function generateStaticParams() {
   const users = await getAllUsers()
@@ -31,15 +32,13 @@ export default async function Profile({
 
   const artist = await getArtistByUsername(params.username)
   const isOwnPage = user?.username === artist?.username
-  // user doesn't exist or user.username is not the params.username, don't show edit button
   // user.username is not the params.username, show add comment
   if (artist) {
-    console.log(artist.nameToDisplay, 'nametodisplay')
     // const spotifyId = artist?.socialLinks.get('spotify')!
     return (
       artist && (
-        <>
-          <div className="flex justify-center gap-24 my-8">
+        <div className='bg-coffee-50'>
+          <div className="flex justify-center gap-24 py-8">
             <Image
               src={artist.photo}
               alt="Artist image"
@@ -56,9 +55,18 @@ export default async function Profile({
             {/* example */}
             <SpotifyWidget spotifyId={'06HL4z0CvFAxyc27GXpf02'} />
           </div>
-          {/* <Images />
-      <Videos /> */}
-        </>
+          {artist.images?.map((image) => {
+            return (
+              <Image src={image} alt="" width={400} height={250} />
+            )
+          })}
+          {artist.videos?.map((video) => {
+            return (
+              <div>{video}</div>
+            )
+          })}
+      {!isOwnPage && <Button type="button">Add review</Button>}
+        </div>
       )
     )
   }
