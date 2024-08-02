@@ -82,7 +82,6 @@ export type SubmissionType = {
   status: 'pending' | 'accepted' | 'declined'
 }
 
-
 export type ReviewType = {
   fromId: string
   toId: string

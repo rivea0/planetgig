@@ -1,4 +1,4 @@
-import { model, models, Schema } from "mongoose";
+import { model, models, Schema } from 'mongoose'
 
 const ArtistSchema = new Schema({
   clerkId: { type: String, required: true, unique: true },

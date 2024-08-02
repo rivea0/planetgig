@@ -1,4 +1,4 @@
-import { model, models, Schema } from "mongoose";
+import { model, models, Schema } from 'mongoose'
 
 const GigSchema = new Schema({
   venue: { type: String, required: true },
