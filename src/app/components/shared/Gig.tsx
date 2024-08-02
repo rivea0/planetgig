@@ -12,29 +12,49 @@ import { Button } from '../ui/button'
 import { handleSubmission } from '@/lib/actions/user.action'
 import { User } from '@clerk/nextjs/server'
 
-export default function Gig({ gig, user }: {gig: GigType, user: User | null}) {
+export default function Gig({
+  gig,
+  user,
+}: {
+  gig: GigType
+  user: User | null
+}) {
   let handleSubmissionWithIds
   if (user) {
-    handleSubmissionWithIds = handleSubmission.bind(null, {gigId: gig._id, userId: user!.id})
+    handleSubmissionWithIds = handleSubmission.bind(null, {
+      gigId: gig._id,
+      userId: user!.id,
+    })
   }
   return (
-    // {gigsList.map(gig => {
-        <form action={handleSubmissionWithIds}>
-        <Card className='bg-coffee-300 border-gray-300'>
-        <CardHeader>
-          {gig.imageUrl && <Image src={gig.imageUrl} alt="gig image" width={400} height={200} />}
+    <form action={handleSubmissionWithIds}>
+      <Card className="bg-coffee-200 border-gray-300 min-h-96 md:p-8 grid auto-rows-auto">
+        <CardHeader className="p-2">
+          {gig.imageUrl && (
+            <Image
+              src={gig.imageUrl}
+              alt="gig image"
+              width={400}
+              height={200}
+            />
+          )}
           <CardTitle className="font-normal">{`${gig.venue}, ${gig.location}`}</CardTitle>
-          <CardDescription className='text-md'>{gig.gigType}</CardDescription>
+          <CardDescription className="text-md">{gig.gigType}</CardDescription>
         </CardHeader>
-        <CardContent className='flex flex-col items-center gap-2'>
-          <p className='font-semibold'>{new Date(gig.date).toLocaleDateString()}</p>
-          <Button type="submit" className="text-center">Apply</Button>
+        <CardContent className="flex flex-col items-center gap-2">
+          <p className="font-semibold">
+            {new Date(gig.date).toLocaleDateString()}
+          </p>
+          {user && (
+            <Button type="submit" className="text-center">
+              Apply
+            </Button>
+          )}
         </CardContent>
         <CardFooter>
-          <p className='text-lg'>{`${gig.pay}$`}</p>
+          {user && <p className="text-lg">{`${gig.pay}$`}</p>}
         </CardFooter>
-      </Card>  
-      </form>
-      // }
-      )
-    }
+      </Card>
+    </form>
+  )
+}

@@ -15,7 +15,7 @@ export default async function RootLayout({
   }
   return (
     <div
-      className={`flex h-screen flex-col bg-hero-pattern bg-cover bg-center`}
+      className={`flex flex-col h-screen bg-hero-pattern bg-cover bg-center`}
     >
       {user ? (
         <Header isAuth={true} username={user?.username} />

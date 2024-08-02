@@ -23,8 +23,20 @@ export default function Hero() {
               block: 'start',
             })
           }}
-        ><span className='cursor-pointer'>Explore gigs</span>
+        >
+          <span className="cursor-pointer">Explore gigs</span>
         </Button>
+        <div className="mt-36 text-center">
+          <span className="text-sm text-coffee-400">Or</span>
+          <p className="mt-2 hover:underline">
+            <Link
+              href="/artists"
+              className="text-coffee-100 text-md font-semibold"
+            >
+              Explore artists
+            </Link>
+          </p>
+        </div>
       </section>
       <h1 ref={gigsRef} className="text-xl text-center py-8">
         Available gigs

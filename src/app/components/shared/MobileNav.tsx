@@ -1,12 +1,14 @@
 import Image from 'next/image'
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from '@/app/components/ui/sheet'
+import { Sheet, SheetContent, SheetTrigger } from '@/app/components/ui/sheet'
 import NavItems from './NavItems'
 
-export default function MobileNav({ isAuth, username }: { isAuth: boolean, username?: string | null }) {
+export default function MobileNav({
+  isAuth,
+  username,
+}: {
+  isAuth: boolean
+  username?: string | null
+}) {
   return (
     <nav className="md:hidden">
       <Sheet>
@@ -19,7 +21,7 @@ export default function MobileNav({ isAuth, username }: { isAuth: boolean, usern
             className="cursor-pointer"
           />
         </SheetTrigger>
-        <SheetContent className='flex flex-col gap-6 md:hidden'>
+        <SheetContent className="flex flex-col gap-6 md:hidden">
           <NavItems isAuth={isAuth} username={username} />
         </SheetContent>
       </Sheet>
