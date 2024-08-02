@@ -1,7 +1,5 @@
-// import { auth } from "@clerk/nextjs/server"
 import EditProfileForm from '@/app/components/shared/EditProfileForm'
-import { getCurrentUser } from '@/lib/actions/user.action'
-
+import { getCurrentUser, getArtistByClerkId } from '@/lib/actions/user.action'
 export default async function EditProfile() {
   let user
   try {
@@ -9,16 +7,19 @@ export default async function EditProfile() {
   } catch (err) {
     user = null
   }
+  if (user) {
+    const artist = await getArtistByClerkId(user.id)
 
-  // const { sessionClaims } = auth()
-  // const userId = sessionClaims?.userId as string
+    return (
+      <div className="flex flex-col justify-center items-center bg-coffee-50">
+        <h1 className="text-3xl mt-8">Edit Profile</h1>
+        <EditProfileForm
+          userId={user.id}
+          artist={JSON.parse(JSON.stringify(artist))}
+        />
+      </div>
+    )
+  }
 
-  return user ? (
-    <div className="flex flex-col justify-center items-center bg-coffee-100">
-      <h1 className="text-3xl mt-8">Edit Profile</h1>
-      <EditProfileForm userId={user.id} />
-    </div>
-  ) : (
-    <div>User does not exist</div>
-  )
+  return <div>User does not exist</div>
 }
