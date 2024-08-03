@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## PlanetGig
 
-## Getting Started
+A live music directory application for artists to submit their profiles to music gigs and monitor their submissions, also showcasing their profile. 
 
-First, run the development server:
+Created for KinetikGigs' 2024 Live Music Directory & Professional Network Web App Challenge.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This repository is hosted on [planetgig.vercel.app](https://planetgig.vercel.app/).
+
+Built with Next.js, Clerk (handling authentication), and MongoDB.
+
+### To run locally
+
+Clone the repository:
+
+```
+git clone git@github.com:rivea0/planetgig.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`cd` into it:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cd planetgig
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Install dependencies:
 
-## Learn More
+```
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Run the server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Credits
 
-## Deploy on Vercel
+The website link icon is from [Phospor Icons](https://phosphoricons.com).
+All other icons are from [Feather Icons](https://feathericons.com).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Images are taken from [Unsplash](https://unsplash.com) and [Pexels](https://www.pexels.com).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### License
+MIT
+
