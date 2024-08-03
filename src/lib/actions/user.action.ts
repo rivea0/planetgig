@@ -45,8 +45,8 @@ export async function handleSubmission(
       artistId: artist._id,
       gigId: gigId,
     })
-    if (existingSubmission) {
-      redirect('/submissions')
+    if (existingSubmission.length) {
+      return
     }
     const newSubmission = await Submission.create({
       gigId: gigId,
